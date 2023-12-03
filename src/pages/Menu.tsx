@@ -40,12 +40,12 @@ export function Menu() {
           gameManager.emit("start")
           setLogin(false)
         } : () => { }}></button>
-        <button className="ClickMe" style={{
+        {/* <button className="ClickMe" style={{
           bottom: "16%",
           backgroundImage: `url("/Genshin/jump.png")`
         }} onClick={login ? () => {
           window.open('https://www.bilibili.com/video/BV1E8411v7xy');
-        } : () => { }}></button>
+        } : () => { }}></button> */}
       </div>
       {doorCreate && (
         <div className="menu-doorCreate-content" style={{ opacity: openDoor ? "0" : "1" }}>

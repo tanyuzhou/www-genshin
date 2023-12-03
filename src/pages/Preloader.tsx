@@ -8,11 +8,14 @@ export function Preloader() {
   const progressRef = useRef();
   const [visible, setVisible] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [buttonVisible, setButtonVisible] = useState(false);
 
   useEffect(() => {
     if (progress >= 1) {
-      setVisible(false);
-      setTimeout(() => gameManager.emit("preloaded"), 1500);
+      // setVisible(false);
+      // setTimeout(() => gameManager.emit("preloaded"), 1500);
+      // 设置按钮可见
+      setButtonVisible(true);
     }
   }, [progress])
 
@@ -24,6 +27,13 @@ export function Preloader() {
     setProgress(t);
   }, [progress]);
 
+  const handleButtonClick = async () => {
+    // TODO: 这里可以添加进入游戏的逻辑
+    gameManager.emit("button-start-click");
+    setVisible(false);
+    setTimeout(() => gameManager.emit("preloaded"), 1500);
+  };
+
   return (
     <div className="progress-container" style={{ opacity: visible ? "1" : "0" }}>
       <div className="progress-content" >
@@ -34,7 +44,11 @@ export function Preloader() {
           </div>
           <div className="ball" style={{ left: "-2vmin" }}></div>
           <div className="ball" style={{ left: "40.8vmin", top: "-2.4vmin" }}></div>
-          <div style={{ paddingTop: "1vmin", fontSize: "1.4vmin" }}>为了您更好的体验，请在电脑端打开</div>
+          {/* <div style={{ paddingTop: "1vmin", fontSize: "1.4vmin" }}>为了您更好的体验，请在电脑端打开</div> */}
+          {/* 加一个按钮，文字为原神启动 */}
+          {buttonVisible && (
+            <button className="ClickMe" onClick={handleButtonClick}>原神启动</button>
+          )}
         </div>
       </div>
     </div>
