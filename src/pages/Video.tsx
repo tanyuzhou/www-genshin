@@ -18,7 +18,8 @@ export function Video() {
 
     return (
         <div className="video-container">
-            <video ref={videoRef} preload='auto' playsInline={true} src="/Genshin/BV1ic411D7xo.mp4" className={"video " + (hide ? "hide" : "")} />
+            <video ref={videoRef} preload='auto' playsInline={true} x5-playsinline="true" webkit-playsinline="true"
+                    x5-video-player-type="h5" x5-video-player-fullscreen="false" src="/Genshin/BV1ic411D7xo.mp4" className={"video " + (hide ? "hide" : "")} />
         </div>
     )
 }
