@@ -160,6 +160,17 @@ class StateGame extends StateHandler<Game> {
         gameManager.on("doorCreateBegin", () => {
             setTimeout(() => audioEffect.play({ url: "/Genshin/Genshin Impact [DoorComeout].mp3", force: true }), 150);
         })
+        gameManager.on("video", () => {
+            function lowerBGMVolume() {
+                audioBGM.node.setVolume(audioBGM.node.getVolume() - 0.05);
+                if (audioBGM.node.getVolume() > 0) {
+                    setTimeout(lowerBGMVolume, 25);
+                } else {
+                    audioBGM.node.stop();
+                }
+            }
+            lowerBGMVolume();
+        })
 
     }
 
